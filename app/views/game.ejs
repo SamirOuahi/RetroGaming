@@ -1,0 +1,27 @@
+<%- include('./partials/header') %>
+
+<div>
+  <img
+    id="background"
+    src="/images/wal2.jpg"
+    alt="background GTA Vice City d'une voiture sur une coline qui surplomb une ville"
+  />
+</div>
+
+<h1 id="main_title">Détails d'un jeu</h1>
+<div class="one-product-container-jeux">
+  <div>
+    <button class="btn-back" onclick="history.back();">Retour</button>
+    <img class="img-jeux"src="<%= game.image %>" alt="">
+  </div>
+  <div class="fiche-product">
+    <h2><%= game.machine %></h2>
+  <h3><%= game.name %></h3>
+  <h4>Date de sortie : <%= game.date %></h4>
+  <p><%= game.description %></p>
+  </div>
+  
+
+</div>
+
+<%- include('./partials/footer') %>

@@ -1,0 +1,64 @@
+<%- include('./partials/header') %>
+
+<div>
+  <img
+    id="background"
+    src="/images/wal2.jpg"
+    alt="background GTA Vice City d'une voiture sur une coline qui surplomb une ville"
+  />
+</div>
+
+<div class="parametres">
+  <a class="home_link" href="/">Home</a>
+  <a class="home_link" id="ajouter_console_btn" href="#">Ajouter une console</a>
+  <a class="home_link" href="/">Modifier une console</a>
+  <a class="home_link" href="/">Supprimer une console</a>
+</div>
+
+<!-- Modal pour ajouter une console -->
+
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <form id="console_form" action="/consoles" method="post">
+      <label for="name">Nom de la marque :</label>
+      <input type="text" placeholder="Nintendo, Playstation, Sega ..." id="nom_marque" name="name">
+      <label for="name">Nom de la console:</label>
+      <input type="text" placeholder="Nintendo 64, Playstation 1, Mega Drive ..." id="nom_console" name="name">
+      <label for="date">Date de sortie:</label>
+      <input type="text" placeholder="15/04/1989" id="date_console" name="date">
+      <label for="image">Image de la console:</label>
+      <input type="file" id="image_console" name="image">
+      <label for="description">Description de la console:</label>
+      <input type="text" placeholder="cette console ..." id="description_console" name="description">
+      <button type="submit">Ajouter</button>
+    </form>
+  </div>
+</div>
+
+
+<h1 id="main_title">Consoles</h1>
+
+
+<div class="containerC">
+  <section class="categoriesC">
+    <h2>Catégories</h2>
+    <ul>
+      <li><a href="/consoles">All</a></li>
+
+      <% brands.forEach(brand => { %>
+        <li><a href="/consoles?brand_id=<%=brand.id%>"><%=brand.name%></a></li>
+      <% }) %>
+    </ul>
+  </section>
+
+  <div class="product-containerC">
+    <% consoles.forEach(console => { %>
+      <div class="productC">
+        <h2><%= console.name %></h2>
+        <a href="/consoles/<%= console.id%>"><img src="<%= console.image %>" alt="N64" /></a>
+      </div>
+    <% }) %>
+</div>
+
+<%- include('./partials/footer') %>

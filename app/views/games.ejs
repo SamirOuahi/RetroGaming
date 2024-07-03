@@ -1,0 +1,48 @@
+<%- include('./partials/header') %>
+
+<div>
+  <img
+    id="background"
+    src="/images/wal2.jpg"
+    alt="background GTA Vice City d'une voiture sur une coline qui surplomb une ville"
+  />
+</div>
+
+<div class="parametres">
+  <a class="home_link" href="/">Home</a>
+  <a class="home_link" href="/">Ajouter un jeu</a>
+  <a class="home_link" href="/">Modifier un jeu</a>
+  <a class="home_link" href="/">Supprimer un jeu</a>
+</div>
+<h1 id="main_title">Jeux Vidéo</h1>
+<div class="containerJv">
+  <section class="categoriesJv">
+    <h2>Catégories</h2>
+    <ul>
+      <li><a href="/games">All</a></li>
+      
+      <% brands.forEach(brand => { %>
+      <li class="title_family"><%=brand.name%></li>
+      <% consoles.forEach(console => { %>
+        <% if (console.brand_id == brand.id) { %>
+          <li><a href="/games?console_id=<%=console.id%>"><%=console.name%></a></li>
+        <% } %>
+      
+      <% }) %> <% }) %>
+    </ul>
+  </section>
+
+  <div class="product-containerJv">
+    <% games.forEach(game => { %>
+    <div class="productJv">
+      <h2><%= game.name%></h2>
+      <a href="/games/<%= game.id %>"
+        ><img src="<%= game.image%>" alt="N64"
+      /></a>
+      <p>Console : <%= game.machine%></p>
+    </div>
+    <% }) %>
+  </div>
+</div>
+
+<%- include('./partials/footer') %>

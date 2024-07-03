@@ -1,0 +1,42 @@
+<%- include('./partials/header') %>
+
+<div>
+    <img id="background" src="/images/wal2.jpg" alt="background GTA Vice City d'une voiture sur une coline qui surplomb une ville">
+  </div> 
+  
+  <div class="parametres">
+    <a class="home_link" href="/">Home</a>
+    <a class="home_link" href="/">Ajouter un nouvel accessoire</a>
+    <a class="home_link" href="/">Modifier un accessoire</a>
+    <a class="home_link" href="/">Supprimer un accessoire</a>
+  </div>
+  <h1 id="main_title">Accessoires</h1>
+  <div class="containerD">
+    <section class="categoriesD">
+      <h2>Catégories</h2>
+      <ul>
+        <li><a href="/accessories">All</a></li>
+        <% consoles.forEach(console => { %>
+          <li><a href="/accessories?console_id=<%=console.id%>"><%=console.name%></a></li>
+        <% }) %>
+      </ul>
+    </section>
+  
+    <div class="product-containerD">
+
+      <% accessories.forEach(accessorie=> { %>
+        <div class="productD">
+          <h2><%=accessorie.name%></h2>
+          <a href="/accessories/<%= accessorie.id %>"><img src="<%=accessorie.image%>" alt="N64" /></a>
+          <p>Console : <%=accessorie.console%></p>
+        </div>
+      <% }) %>
+      
+      
+    </div>
+  </div>
+
+
+<%- include('./partials/footer') %>
+
+
